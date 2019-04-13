@@ -19,14 +19,17 @@ const myVoice = new p5.Speech();
 function setup() {
   noCanvas();
   // Create a camera input
-  video = createCapture({
+  createCapture({
     audio: false,
     video: {
-      facingMode: "environment"
+      facingMode: {
+        exact: "environment"
+      }
     }
   });
 
-  // Initialize the Image Classifier method with MobileNet and the video asget the second argument
+  video = createCapture(VIDEO);
+  // Initialize the Image Classifier method with MobileNet and the video as the second argument
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
 }
 
