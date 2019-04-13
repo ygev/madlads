@@ -60,9 +60,9 @@ h2.header__description {
   margin: 0 auto;
   font-size: 3em;
 }
-.black__text {
+.blank__text {
   position: relative;
-  top: 0.25em;
+  top: 0.75em;
 }
 
 .blank__space {
