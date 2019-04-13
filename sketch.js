@@ -24,7 +24,7 @@ function setup() {
     audio: false,
     facingMode: "environment"
   });
-  // Initialize the Image Classifier method with MobileNet and the video as the second argument
+  // Initialize the Image Classifier method with MobileNet and the video asget the second argument
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
 }
 
