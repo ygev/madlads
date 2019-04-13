@@ -45,3 +45,9 @@ function gotResult(err, results) {
   myVoice.speak(`I see ${results[0].label}`);
   classifyVideo();
 }
+
+// Remove Address Bar
+
+setTimeout(function() {
+  window.scrollTo(0, 1);
+}, 100);
