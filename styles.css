@@ -1,5 +1,10 @@
+body {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+}
+
 video {
-  height: 100vh;
+  height: 60vh;
   width: 100vw;
   z-index: -999;
   position: absolute;
@@ -12,7 +17,7 @@ video {
 .box {
   /* position: relative; */
   width: 100vw;
-  height: 58vh;
+  height: 100vh;
   /* margin: 0 auto; */
   overflow: hidden;
 }
@@ -20,18 +25,30 @@ video {
 .box:after {
   content: "";
   position: absolute;
-  left: 25vw;
+  left: 15vw;
   top: 30vh;
-  /* border-radius: 100%; */
+  transform: translate(15%, 1%);
   width: 50vw;
   height: 50vw;
   box-shadow: 0px 0px 0px 2000px #ffcb3d;
   z-index: -99;
-  border-bottom: 30px black solid;
-  border-right: 30px black solid;
+  border: 20px white solid;
 }
 
 /* Header */
 header {
+  text-align: center;
   z-index: 999;
+}
+
+h1.header__madlads {
+  font-size: 5.5em;
+  font-weight: 700;
+  margin-top: 1em;
+}
+
+h2.header__description {
+  font-size: 1.75em;
+  font-weight: 400;
+  margin-top: 0.5em;
 }
