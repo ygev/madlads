@@ -23,9 +23,7 @@ function setup() {
   createCapture({
     audio: false,
     video: {
-      facingMode: {
-        exact: "environment"
-      }
+      facingMode: "environment"
     }
   });
   // Initialize the Image Classifier method with MobileNet and the video as the second argument
