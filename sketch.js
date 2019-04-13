@@ -11,7 +11,10 @@ This example uses a callback pattern to create the classifier
 
 let classifier;
 let video;
-let resultsP;
+// Create a new p5.speech object
+// You can also control the Language, Rate, Pitch and Volumn of the voice
+// Read more at http://ability.nyu.edu/p5.js-speech/
+const myVoice = new p5.Speech();
 
 function setup() {
   noCanvas();
@@ -19,19 +22,12 @@ function setup() {
   video = createCapture(VIDEO);
   // Initialize the Image Classifier method with MobileNet and the video as the second argument
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
-  resultsP = createP("Loading model and video...");
-  createCapture({
-    audio: false,
-    video: {
-      facingMode: {
-        exact: "environment"
-      }
-    }
-  });
 }
 
 function modelReady() {
-  console.log("Model Ready");
+  // Change the status of the model once its ready
+  select("#status").html("Model Loaded");
+  // Call the classifyVideo function to start classifying the video
   classifyVideo();
 }
 
@@ -43,6 +39,8 @@ function classifyVideo() {
 // When we get a result
 function gotResult(err, results) {
   // The results are in an array ordered by confidence.
-  resultsP.html(results[0].label + " " + nf(results[0].confidence, 0, 2));
+  select("#result").html(results[0].label);
+  select("#probability").html(nf(results[0].confidence, 0, 2));
+  myVoice.speak(`I see ${results[0].label}`);
   classifyVideo();
 }
