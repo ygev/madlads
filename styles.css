@@ -11,6 +11,13 @@ video {
   object-fit: cover;
   left: 0px;
   top: 0;
+  /* flip it */
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
 
 /* Box */
@@ -62,7 +69,7 @@ h2.header__description {
 }
 .blank__text {
   position: relative;
-  top: 0.75em;
+  top: 0.25em;
 }
 
 .blank__space {
