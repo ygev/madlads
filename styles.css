@@ -17,7 +17,7 @@ video {
 .box {
   /* position: relative; */
   width: 100vw;
-  height: 100vh;
+  height: 40vh;
   /* margin: 0 auto; */
   overflow: hidden;
 }
@@ -32,7 +32,7 @@ video {
   height: 50vw;
   box-shadow: 0px 0px 0px 2000px #ffcb3d;
   z-index: -99;
-  border: 20px white solid;
+  border: 20px black solid;
 }
 
 /* Header */
@@ -50,5 +50,38 @@ h1.header__madlads {
 h2.header__description {
   font-size: 1.75em;
   font-weight: 400;
-  margin-top: 0.5em;
+  margin-top: 0.75em;
+}
+
+/* Blank */
+.blank__wrapper {
+  width: 60vw;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 3em;
+}
+.black__text {
+  position: relative;
+  top: 0.25em;
+}
+
+.blank__space {
+  height: 5vw;
+  border-bottom: 15px black solid;
+  border-right: 15px black solid;
+  border-left: 15px black solid;
+}
+
+button {
+  padding: 11px 28px;
+  background-color: white;
+  border-radius: 100px;
+  border: 10px solid #121212;
+  box-shadow: 5px 5px #121212;
+  /* margin: 0 auto; */
+  transform: translate(93%, 120%);
+  width: 35vw;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.75em;
 }
