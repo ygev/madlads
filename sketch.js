@@ -25,7 +25,7 @@ function setup() {
       facingMode: "user"
     }
   });
-}
+
   // Initialize the Image Classifier method with MobileNet and the video asget the second argument
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
 }
