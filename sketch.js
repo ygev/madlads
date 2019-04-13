@@ -20,6 +20,14 @@ function setup() {
   noCanvas();
   // Create a camera input
   video = createCapture(VIDEO);
+  createCapture({
+    audio: false,
+    video: {
+      facingMode: {
+        exact: "environment"
+      }
+    }
+  });
   // Initialize the Image Classifier method with MobileNet and the video as the second argument
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
 }
