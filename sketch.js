@@ -20,7 +20,7 @@ function setup() {
   noCanvas();
   // Create a camera input
   video = createCapture(VIDEO);
-  video({
+  createCapture({
     audio: false,
     facingMode: "environment"
   });
