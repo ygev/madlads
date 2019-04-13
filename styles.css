@@ -61,19 +61,28 @@ h2.header__description {
 }
 
 /* Blank */
+
 .blank__wrapper {
-  width: 60vw;
+  /* display: inline-block; */
   text-align: center;
-  margin: 0 auto;
-  font-size: 3em;
+  margin-top: 5em;
+  /* transform: translate(100%,200%); */
 }
+
 .blank__text {
   position: relative;
-  top: 0.25em;
+  bottom: 0.75em;
 }
 
 .blank__space {
   height: 5vw;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  /* transform: translate(120%, 200%); */
+  display: inline-block;
+  text-align: center;
+  /* margin: 0 auto; */
+  font-size: 3em;
   border-bottom: 15px black solid;
   border-right: 15px black solid;
   border-left: 15px black solid;
