@@ -19,6 +19,7 @@ let input = [];
 let prev;
 let finalString = "";
 let see;
+let isConfirm = false;
 function preload() {
   //my table is comma separated value "csv"
   //and has a header specifying the columns labels
@@ -47,6 +48,8 @@ function draw() {
   confirmButton = document.getElementById("confirm");
 
   let probability = document.getElementById("probability").innerText;
+  document.getElementById("count").innerHTML =
+    input.length + 1 + "/" + numOfInput;
 
   //when the model sees new things
 
@@ -54,10 +57,12 @@ function draw() {
     see[0] != "..." &&
     see[0] != prev &&
     input.length < numOfInput &&
-    probability > 0.55
+    probability > 0.3 &&
+    !isConfirm
   ) {
     myVoice.setVolume(1.0);
     myVoice.speak("I see" + see[0]);
+    //myVoice.setVolume(0.0);
 
     prev = see[0];
 
@@ -65,19 +70,20 @@ function draw() {
     confirmButton.onclick = function() {
       if (see[0] != "...") {
         myVoice.setVolume(0);
-
+        isConfirm = true;
         input.push(see[0]);
 
         confirmPage = createDiv(" ");
         confirmPage.id("newpage");
 
-        itemNum = createDiv(input.length + "/" + numOfInput);
+        itemNum = createDiv("Word " + input.length + " of " + numOfInput);
         itemNum.id("itemNum");
 
-        objectName = createDiv(see[0]);
+        objectName = createSpan(see[0]);
         objectName.id("objectName");
+        // objectName.parent(document.getElementById("blank__space"));
 
-        nextButton = createButton("Next");
+        nextButton = createButton("Next Word");
         nextButton.id("nextButton");
 
         vidEle = select("video");
@@ -98,6 +104,7 @@ function draw() {
         };
 
         document.getElementById("nextButton").onclick = function() {
+          isConfirm = false;
           vidEle = select("video");
           vidEle.show();
           confirmPage.remove();
@@ -107,14 +114,19 @@ function draw() {
           retake.remove();
 
           if (input.length == numOfInput) {
+            isConfirm = false;
+
+            confirm = select("#confirm");
+            confirm.remove();
+
+            yourMad = createDiv("Your Mad Libs");
+            yourMad.id("your-mad");
+
             madlibsPage = createDiv(" ");
             madlibsPage.id("madlibsPage");
 
             vidEle = select("video");
             vidEle.hide();
-
-            yourMad = createDiv("Your Mad Libs");
-            yourMad.id("your-mad");
 
             again = createDiv("Play Again");
             again.id("again");
@@ -159,11 +171,11 @@ function classifyVideo() {
 // When we get a result
 function gotResult(err, results) {
   // The results are in an array ordered by confidence.
-  if (nf(results[0].confidence, 0, 2) > 0.55) {
+  if (nf(results[0].confidence, 0, 2) > 0.3) {
     let see = results[0].label.split(",");
     select("#result").html(see[0]);
     select("#probability").html(nf(results[0].confidence, 0, 2));
-  } else {
+  } else if (nf(results[0].confidence, 0, 2) < 0.1) {
     select("#result").html("...");
     select("#probability").html(" ");
   }

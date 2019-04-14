@@ -1,13 +1,14 @@
 * {
-	box-sizing: border-box;
-	position: relative;
-	overflow: hidden;
-
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
 }
-.test { outline: 10px solid red; }
+.test {
+  outline: 10px solid red;
+}
 .container {
-	position: relative;
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
