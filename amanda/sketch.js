@@ -44,33 +44,32 @@ function draw() {
   let see = document.getElementById("result").innerText.split(",");
 
   let numOfInput = table.getColumnCount() - 1;
-  print(numOfInput);
   confirmButton = document.getElementById("confirm");
 
   let probability = document.getElementById("probability").innerText;
   //  print(probability.innerText);
 
   //when the model sees new things
+
   if (
     see[0] != "..." &&
     see[0] != prev &&
     input.length < numOfInput &&
-    probability > 0
+    probability > 0.7
   ) {
-    print("see: " + see[0]);
+    myVoice.setVolume(1);
+
     myVoice.speak("I see" + see[0]);
-    prev = see[0];
+    let prev = see[0];
 
     //when confirm is pressed, add a new input
     confirmButton.onclick = function() {
-      print(image);
+      myVoice.setVolume(0);
 
       input.push(see[0]);
-      print("inputs: " + input);
 
       confirmPage = createDiv(" ");
       confirmPage.id("newpage");
-      print(confirmPage);
 
       itemNum = createDiv(input.length + "/" + numOfInput);
       itemNum.id("itemNum");
@@ -86,9 +85,24 @@ function draw() {
 
       retake = createDiv("Retake");
       retake.id("retake");
+      print("before" + input);
+
+      print(select("#retake"));
+
+      document.getElementById("retake").onclick = function() {
+        print("hi");
+        input.splice(-1, 1);
+        print("retake" + input);
+        vidEle = select("video");
+        vidEle.show();
+        confirmPage.remove();
+        itemNum.remove();
+        objectName.remove();
+        nextButton.remove();
+        retake.remove();
+      };
 
       document.getElementById("nextButton").onclick = function() {
-        print("henlo");
         vidEle = select("video");
         vidEle.show();
         confirmPage.remove();
@@ -104,7 +118,14 @@ function draw() {
           vidEle = select("video");
           vidEle.hide();
 
+          yourMad = createDiv("Your Mad Libs");
+          yourMad.id("your-mad");
+
+          again = createDiv("Play Again");
+          again.id("again");
+
           finalString += table.getString(0, 0);
+
           var first = createSpan(finalString);
           first.parent(document.getElementById("final-madlib"));
           let i = 0;
@@ -142,8 +163,9 @@ function classifyVideo() {
 // When we get a result
 function gotResult(err, results) {
   // The results are in an array ordered by confidence.
-  if (nf(results[0].confidence, 0, 2) > 0) {
-    select("#result").html(results[0].label);
+  if (nf(results[0].confidence, 0, 2) > 0.7) {
+    let see = results[0].label.split(",");
+    select("#result").html(see[0]);
     select("#probability").html(nf(results[0].confidence, 0, 2));
   } else {
     select("#result").html("...");

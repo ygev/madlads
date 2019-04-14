@@ -20,7 +20,7 @@ function setup() {
 
 function modelReady() {
   // Change the status of the model once its ready
-  select("#status").html("Model Loaded");
+  //select("#status").html("Model Loaded");
   // Call the classifyVideo function to start classifying the video
   classifyVideo();
 }
@@ -35,7 +35,8 @@ function gotResult(err, results) {
   // The results are in an array ordered by confidence.
   let see = results[0].label.split(",");
   document.getElementById("blank__text").innerHTML = see[0];
-  myVoice.speak(`I see ${results[0].label}`);
+  print(see[0]);
+  // myVoice.speak(`I see ${results[0].label}`);
   classifyVideo();
 }
 
