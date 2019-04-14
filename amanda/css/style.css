@@ -1,0 +1,130 @@
+body{
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+
+}
+.bold{
+  font-weight: bold;
+  text-decoration:underline;
+}
+
+
+video{
+  z-index:-1;
+  object-fit: cover;
+  width:100px;
+  height: 100px;
+  position: absolute;
+  left:0;
+  top:0;
+  object-position: 50% 20%;
+}
+
+.bot-nav{
+  width: 100vw;
+  height: 56px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  box-shadow: 0px -2px 12px rgba(0, 0, 0, 0.16);
+}
+
+button{
+  padding: 11px 28px;
+  background-color: #FFCB3D;
+  border-radius: 100px;
+  border: 3px solid #121212;
+  box-shadow: 5px 5px #121212;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+#confirm{
+  position: absolute;
+  right: 16px;
+  bottom: 28px;
+  z-index: 1;
+}
+
+
+#confirm:active {
+  bottom: 24px;
+}
+
+#result{
+  left: 16px;
+  font-size: 16px;
+  top: 15px;
+}
+
+
+
+/* confirm page */
+#newpage{
+  position: absolute;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  background-color: #FFCB3D;
+  z-index: 10;
+  animation: fadeIn 1s ;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#objectName{
+  font-size: 34px;
+  z-index: 11;
+  width: 100vw;
+  text-align: center;
+  top: 100px;
+  font-weight: bold;
+}
+
+#itemNum{
+  font-size: 16px;
+  z-index: 11;
+  width; 100vw;
+  text-align: center;
+  top: 60px;
+}
+
+#nextButton {
+  position: absolute;
+  right: 16px;
+  bottom: 28px;
+  z-index: 12;
+}
+
+#retake{
+  position: absolute;
+  left: 16px;
+  bottom: 36px;
+  z-index: 12;
+  font-size: 16px;
+}
+
+#final-madlib{
+  width: 100vw;
+  padding-left: 16px;
+  padding-right: 16px;
+  z-index: 15;
+  font-size: 20px;
+}
+
+#madlibsPage{
+  position: absolute;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  background-color: white;
+  z-index: 11;
+  animation: fadeIn 1s ;
+}

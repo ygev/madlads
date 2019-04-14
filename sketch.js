@@ -25,17 +25,6 @@ function setup() {
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
 }
 
-navigator.mediaDevices
-  .getUserMedia({
-    video: {
-      facingMode: { exact: "environment" }
-    }
-  })
-  .then(function(stream) {
-    video.src = window.URL.createObjectURL(stream);
-    video.play();
-  });
-
 function modelReady() {
   // Change the status of the model once its ready
   select("#status").html("Model Loaded");
