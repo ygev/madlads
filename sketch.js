@@ -1,14 +1,3 @@
-// Copyright (c) 2018 ml5
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
-
-/* ===
-ml5 Example
-Webcam Image Classification using MobileNet and p5.js
-This example uses a callback pattern to create the classifier
-=== */
-
 let classifier;
 let video;
 // Create a new p5.speech object

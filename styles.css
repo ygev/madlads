@@ -22,10 +22,8 @@ video {
 
 /* Box */
 .box {
-  /* position: relative; */
   width: 100vw;
   height: 40vh;
-  /* margin: 0 auto; */
   overflow: hidden;
 }
 
@@ -63,10 +61,8 @@ h2.header__description {
 /* Blank */
 
 .blank__wrapper {
-  /* display: inline-block; */
   text-align: center;
   margin-top: 5em;
-  /* transform: translate(100%,200%); */
 }
 
 .blank__text {
@@ -78,10 +74,8 @@ h2.header__description {
   height: 5vw;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  /* transform: translate(120%, 200%); */
   display: inline-block;
   text-align: center;
-  /* margin: 0 auto; */
   font-size: 3em;
   border-bottom: 15px black solid;
   border-right: 15px black solid;
@@ -94,7 +88,6 @@ button {
   border-radius: 100px;
   border: 10px solid #121212;
   box-shadow: 5px 5px #121212;
-  /* margin: 0 auto; */
   transform: translate(93%, 100%);
   width: 35vw;
   font-family: "Poppins", sans-serif;

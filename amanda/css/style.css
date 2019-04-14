@@ -1,96 +1,99 @@
-body{
+body {
   font-size: 30px;
-  font-family: 'Poppins', sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
-.bold{
+.bold {
   font-weight: bold;
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
-
-video{
-  z-index:-1;
+video {
+  z-index: -1;
   object-fit: cover;
-  width:100px;
-  height: 100px;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
-  left:0;
-  top:0;
+  left: 0;
+  top: 0;
   object-position: 50% 20%;
+  /* flip it */
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
 
-.bot-nav{
+.bot-nav {
   width: 100vw;
-  height: 56px;
+  height: 7vh;
   position: absolute;
   left: 0;
   bottom: 0;
   background-color: white;
-  box-shadow: 0px -2px 12px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px -2vw 12vw rgba(0, 0, 0, 0.16);
 }
 
-button{
+button {
   padding: 11px 28px;
-  background-color: #FFCB3D;
+  background-color: #ffcb3d;
   border-radius: 100px;
-  border: 3px solid #121212;
+  border: 10px solid #121212;
   box-shadow: 5px 5px #121212;
-  font-weight: bold;
-  font-size: 20px;
+  width: 35vw;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.75em;
 }
 
-
-#confirm{
+#confirm {
   position: absolute;
-  right: 16px;
-  bottom: 28px;
+  right: 6vw;
+  bottom: 4vh;
   z-index: 1;
 }
 
-
-#confirm:active {
-  bottom: 24px;
+#result {
+  left: 0.25em;
+  bottom: 0.25em;
+  font-size: 3em;
 }
-
-#result{
-  left: 16px;
-  font-size: 16px;
-  top: 15px;
-}
-
-
 
 /* confirm page */
-#newpage{
+#newpage {
   position: absolute;
   height: 100vh;
   left: 0;
   top: 0;
   width: 100vw;
-  background-color: #FFCB3D;
+  background-color: #ffcb3d;
   z-index: 10;
-  animation: fadeIn 1s ;
+  animation: fadeIn 1s;
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-#objectName{
-  font-size: 34px;
+#objectName {
+  font-size: 3em;
   z-index: 11;
   width: 100vw;
   text-align: center;
-  top: 100px;
+  transform: translate(0%, 500%);
   font-weight: bold;
 }
 
-#itemNum{
+#itemNum {
   font-size: 16px;
   z-index: 11;
-  width; 100vw;
+  width: 100vw;
   text-align: center;
   top: 60px;
 }
@@ -102,23 +105,24 @@ button{
   z-index: 12;
 }
 
-#retake{
+#retake {
   position: absolute;
-  left: 16px;
-  bottom: 36px;
+  left: 1em;
+  bottom: 1em;
   z-index: 12;
-  font-size: 16px;
+  font-size: 1.75em;
 }
 
-#final-madlib{
+#final-madlib {
   width: 100vw;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
   z-index: 15;
-  font-size: 20px;
+  font-size: 3em;
 }
 
-#madlibsPage{
+#madlibsPage {
   position: absolute;
   height: 100vh;
   left: 0;
@@ -126,5 +130,5 @@ button{
   width: 100vw;
   background-color: white;
   z-index: 11;
-  animation: fadeIn 1s ;
+  animation: fadeIn 1s;
 }
