@@ -19,17 +19,22 @@ const myVoice = new p5.Speech();
 function setup() {
   noCanvas();
   // Create a camera input
-  var constraints = {
-    audio: false,
-    video: {
-      facingMode: "environment"
-    }
-  };
   video = createCapture(VIDEO);
   filter("INVERT");
   // Initialize the Image Classifier method with MobileNet and the video as the second argument
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
 }
+
+navigator.mediaDevices
+  .getUserMedia({
+    video: {
+      facingMode: { exact: "environment" }
+    }
+  })
+  .then(function(stream) {
+    video.src = window.URL.createObjectURL(stream);
+    video.play();
+  });
 
 function modelReady() {
   // Change the status of the model once its ready
