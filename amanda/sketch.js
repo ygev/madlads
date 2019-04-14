@@ -16,53 +16,48 @@ let video;
 // Read more at http://ability.nyu.edu/p5.js-speech/
 const myVoice = new p5.Speech();
 let input = [];
-let prev = 'hello';
-let finalString = '';
+let prev = "hello";
+let finalString = "";
 
 function preload() {
   //my table is comma separated value "csv"
   //and has a header specifying the columns labels
-  table = loadTable('madlibs.csv', 'csv');
+  table = loadTable("madlibs.csv", "csv");
 }
 
-
 function setup() {
-
   noCanvas();
   // Create a camera input
   video = createCapture(VIDEO);
   video.size(windowWidth, windowHeight);
 
-
-
   // Initialize the Image Classifier method with MobileNet and the video as the second argument
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
-
 }
 
 function draw() {
-
   //  print(document.getElementById('result').innerText);
-  let see = document.getElementById('result').innerText.split(",");
+  let see = document.getElementById("result").innerText.split(",");
 
   let numOfInput = table.getColumnCount() - 1;
   print(numOfInput);
-  confirmButton = document.getElementById('confirm');
+  confirmButton = document.getElementById("confirm");
 
-  let probability = document.getElementById('probability').innerText;
+  let probability = document.getElementById("probability").innerText;
   //  print(probability.innerText);
 
   //when the model sees new things
-  if (see[0] != "..." && see[0] != prev && input.length < numOfInput && probability > 0.6) {
-
-
+  if (
+    see[0] != "..." &&
+    see[0] != prev &&
+    input.length < numOfInput &&
+    probability > 0
+  ) {
     print("see: " + see[0]);
-    myVoice.speak('I see' + see[0]);
+    myVoice.speak("I see" + see[0]);
     prev = see[0];
     //when confirm is pressed, add a new input
     confirmButton.onclick = function() {
-
-
       // var canvas = document.getElementById('canvas');
       // var context = canvas.getContext('2d');
       // var video = document.getElementById('video');
@@ -71,26 +66,26 @@ function draw() {
       print(image);
 
       input.push(see[0]);
-      print('inputs: ' + input);
+      print("inputs: " + input);
 
-      confirmPage = createDiv(' ');
-      confirmPage.id('newpage');
+      confirmPage = createDiv(" ");
+      confirmPage.id("newpage");
       print(confirmPage);
 
       itemNum = createDiv(input.length + "/" + numOfInput);
-      itemNum.id('itemNum');
+      itemNum.id("itemNum");
 
       objectName = createDiv(see[0]);
-      objectName.id('objectName');
+      objectName.id("objectName");
 
-      nextButton = createButton('Next');
-      nextButton.id('nextButton');
+      nextButton = createButton("Next");
+      nextButton.id("nextButton");
 
-      retake = createDiv('Retake');
-      retake.id('retake');
+      retake = createDiv("Retake");
+      retake.id("retake");
 
-      document.getElementById('nextButton').onclick = function() {
-        print('henlo');
+      document.getElementById("nextButton").onclick = function() {
+        print("henlo");
         confirmPage.remove();
         itemNum.remove();
         objectName.remove();
@@ -98,39 +93,30 @@ function draw() {
         retake.remove();
 
         if (input.length == numOfInput) {
-          madlibsPage = createDiv(' ');
-          madlibsPage.id('madlibsPage');
+          madlibsPage = createDiv(" ");
+          madlibsPage.id("madlibsPage");
 
           finalString += table.getString(0, 0);
           var first = createSpan(finalString);
-          first.parent(document.getElementById('final-madlib'))
+          first.parent(document.getElementById("final-madlib"));
           let i = 0;
           for (var c = 1; c < table.getColumnCount(); c++) {
             finalString += input[i] + table.getString(0, c);
 
-            var bold = createElement('span', input[i]);
-            bold.parent(document.getElementById('final-madlib'))
+            var bold = createElement("span", input[i]);
+            bold.parent(document.getElementById("final-madlib"));
 
-
-            bold.addClass('bold');
-            var regs = createElement('span', table.getString(0, c));
-            regs.parent(document.getElementById('final-madlib'))
-
+            bold.addClass("bold");
+            var regs = createElement("span", table.getString(0, c));
+            regs.parent(document.getElementById("final-madlib"));
 
             i++;
           }
           noLoop();
         }
-
-      }
-
-    }
-
-
-
-
+      };
+    };
   }
-
 }
 
 function modelReady() {
@@ -148,14 +134,12 @@ function classifyVideo() {
 // When we get a result
 function gotResult(err, results) {
   // The results are in an array ordered by confidence.
-  if (nf(results[0].confidence, 0, 2) > 0.6) {
+  if (nf(results[0].confidence, 0, 2) > 0) {
     select("#result").html(results[0].label);
     select("#probability").html(nf(results[0].confidence, 0, 2));
   } else {
     select("#result").html("...");
     select("#probability").html(" ");
-
   }
   classifyVideo();
-
 }
