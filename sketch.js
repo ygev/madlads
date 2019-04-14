@@ -8,7 +8,11 @@ const myVoice = new p5.Speech();
 function setup() {
   noCanvas();
   // Create a camera input
-  video = createCapture(VIDEO);
+  video = createCapture({
+    video: {
+      facingMode: "environment"
+    }
+  });
   filter("INVERT");
   // Initialize the Image Classifier method with MobileNet and the video as the second argument
   classifier = ml5.imageClassifier("MobileNet", video, modelReady);
