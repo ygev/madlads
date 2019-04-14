@@ -28,7 +28,11 @@ function preload() {
 function setup() {
   noCanvas();
   // Create a camera input
-  video = createCapture(VIDEO);
+  video = createCapture({
+    video: {
+      facingMode: "environment"
+    }
+  });
   video.size(windowWidth, windowHeight);
 
   // Initialize the Image Classifier method with MobileNet and the video as the second argument
@@ -56,6 +60,7 @@ function draw() {
     print("see: " + see[0]);
     myVoice.speak("I see" + see[0]);
     prev = see[0];
+
     //when confirm is pressed, add a new input
     confirmButton.onclick = function() {
       // var canvas = document.getElementById('canvas');
