@@ -81,11 +81,16 @@ function draw() {
       nextButton = createButton("Next");
       nextButton.id("nextButton");
 
+      vidEle = select("video");
+      vidEle.hide();
+
       retake = createDiv("Retake");
       retake.id("retake");
 
       document.getElementById("nextButton").onclick = function() {
         print("henlo");
+        vidEle = select("video");
+        vidEle.show();
         confirmPage.remove();
         itemNum.remove();
         objectName.remove();
@@ -95,6 +100,9 @@ function draw() {
         if (input.length == numOfInput) {
           madlibsPage = createDiv(" ");
           madlibsPage.id("madlibsPage");
+
+          vidEle = select("video");
+          vidEle.hide();
 
           finalString += table.getString(0, 0);
           var first = createSpan(finalString);
