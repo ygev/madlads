@@ -65,7 +65,7 @@ h2.header__description {
   margin-top: 5em;
 }
 
-.blank__text {
+#blank__text {
   position: relative;
   bottom: 0.75em;
 }

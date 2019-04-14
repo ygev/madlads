@@ -29,8 +29,8 @@ function classifyVideo() {
 // When we get a result
 function gotResult(err, results) {
   // The results are in an array ordered by confidence.
-  select("#result").html(results[0].label);
-  select("#probability").html(nf(results[0].confidence, 0, 2));
+  let see = results[0].label.split(",");
+  document.getElementById("blank__text").innerHTML = see[0];
   myVoice.speak(`I see ${results[0].label}`);
   classifyVideo();
 }

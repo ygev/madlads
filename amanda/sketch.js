@@ -58,11 +58,6 @@ function draw() {
     prev = see[0];
     //when confirm is pressed, add a new input
     confirmButton.onclick = function() {
-      // var canvas = document.getElementById('canvas');
-      // var context = canvas.getContext('2d');
-      // var video = document.getElementById('video');
-      // context.drawImage(video, 0, 0, 640, 480);
-
       print(image);
 
       input.push(see[0]);
