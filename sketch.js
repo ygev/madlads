@@ -35,7 +35,6 @@ function gotResult(err, results) {
   // The results are in an array ordered by confidence.
   let see = results[0].label.split(",");
   document.getElementById("blank__text").innerHTML = see[0];
-  print(see[0]);
   // myVoice.speak(`I see ${results[0].label}`);
   classifyVideo();
 }
