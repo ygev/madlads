@@ -16,13 +16,6 @@ video {
   left: 0;
   top: 0;
   object-position: 50% 20%;
-  /* flip it */
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
-  -ms-filter: "FlipH";
 }
 
 .bot-nav {
@@ -131,4 +124,12 @@ button {
   background-color: white;
   z-index: 11;
   animation: fadeIn 1s;
+}
+
+#your-mad {
+  z-index: 20;
+}
+
+#again {
+  z-index: 20;
 }

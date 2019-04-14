@@ -16,9 +16,9 @@ let video;
 // Read more at http://ability.nyu.edu/p5.js-speech/
 const myVoice = new p5.Speech();
 let input = [];
-let prev = "hello";
+let prev;
 let finalString = "";
-
+let see;
 function preload() {
   //my table is comma separated value "csv"
   //and has a header specifying the columns labels
@@ -40,89 +40,106 @@ function setup() {
 }
 
 function draw() {
-  //  print(document.getElementById('result').innerText);
-  let see = document.getElementById("result").innerText.split(",");
+  see = document.getElementById("result").innerText.split(",");
 
   let numOfInput = table.getColumnCount() - 1;
-  print(numOfInput);
+
   confirmButton = document.getElementById("confirm");
 
   let probability = document.getElementById("probability").innerText;
-  //  print(probability.innerText);
 
   //when the model sees new things
+
   if (
     see[0] != "..." &&
     see[0] != prev &&
     input.length < numOfInput &&
-    probability > 0
+    probability > 0.55
   ) {
-    print("see: " + see[0]);
+    myVoice.setVolume(1.0);
     myVoice.speak("I see" + see[0]);
+
     prev = see[0];
 
     //when confirm is pressed, add a new input
     confirmButton.onclick = function() {
-      print(image);
+      if (see[0] != "...") {
+        myVoice.setVolume(0);
 
-      input.push(see[0]);
-      print("inputs: " + input);
+        input.push(see[0]);
 
-      confirmPage = createDiv(" ");
-      confirmPage.id("newpage");
-      print(confirmPage);
+        confirmPage = createDiv(" ");
+        confirmPage.id("newpage");
 
-      itemNum = createDiv(input.length + "/" + numOfInput);
-      itemNum.id("itemNum");
+        itemNum = createDiv(input.length + "/" + numOfInput);
+        itemNum.id("itemNum");
 
-      objectName = createDiv(see[0]);
-      objectName.id("objectName");
+        objectName = createDiv(see[0]);
+        objectName.id("objectName");
 
-      nextButton = createButton("Next");
-      nextButton.id("nextButton");
+        nextButton = createButton("Next");
+        nextButton.id("nextButton");
 
-      vidEle = select("video");
-      vidEle.hide();
-
-      retake = createDiv("Retake");
-      retake.id("retake");
-
-      document.getElementById("nextButton").onclick = function() {
-        print("henlo");
         vidEle = select("video");
-        vidEle.show();
-        confirmPage.remove();
-        itemNum.remove();
-        objectName.remove();
-        nextButton.remove();
-        retake.remove();
+        vidEle.hide();
 
-        if (input.length == numOfInput) {
-          madlibsPage = createDiv(" ");
-          madlibsPage.id("madlibsPage");
+        retake = createDiv("Retake");
+        retake.id("retake");
 
+        document.getElementById("retake").onclick = function() {
+          input.splice(-1, 1);
           vidEle = select("video");
-          vidEle.hide();
+          vidEle.show();
+          confirmPage.remove();
+          itemNum.remove();
+          objectName.remove();
+          nextButton.remove();
+          retake.remove();
+        };
 
-          finalString += table.getString(0, 0);
-          var first = createSpan(finalString);
-          first.parent(document.getElementById("final-madlib"));
-          let i = 0;
-          for (var c = 1; c < table.getColumnCount(); c++) {
-            finalString += input[i] + table.getString(0, c);
+        document.getElementById("nextButton").onclick = function() {
+          vidEle = select("video");
+          vidEle.show();
+          confirmPage.remove();
+          itemNum.remove();
+          objectName.remove();
+          nextButton.remove();
+          retake.remove();
 
-            var bold = createElement("span", input[i]);
-            bold.parent(document.getElementById("final-madlib"));
+          if (input.length == numOfInput) {
+            madlibsPage = createDiv(" ");
+            madlibsPage.id("madlibsPage");
 
-            bold.addClass("bold");
-            var regs = createElement("span", table.getString(0, c));
-            regs.parent(document.getElementById("final-madlib"));
+            vidEle = select("video");
+            vidEle.hide();
 
-            i++;
+            yourMad = createDiv("Your Mad Libs");
+            yourMad.id("your-mad");
+
+            again = createDiv("Play Again");
+            again.id("again");
+
+            finalString += table.getString(0, 0);
+
+            var first = createSpan(finalString);
+            first.parent(document.getElementById("final-madlib"));
+            let i = 0;
+            for (var c = 1; c < table.getColumnCount(); c++) {
+              finalString += input[i] + table.getString(0, c);
+
+              var bold = createElement("span", input[i]);
+              bold.parent(document.getElementById("final-madlib"));
+
+              bold.addClass("bold");
+              var regs = createElement("span", table.getString(0, c));
+              regs.parent(document.getElementById("final-madlib"));
+
+              i++;
+            }
+            noLoop();
           }
-          noLoop();
-        }
-      };
+        };
+      }
     };
   }
 }
@@ -142,8 +159,9 @@ function classifyVideo() {
 // When we get a result
 function gotResult(err, results) {
   // The results are in an array ordered by confidence.
-  if (nf(results[0].confidence, 0, 2) > 0) {
-    select("#result").html(results[0].label);
+  if (nf(results[0].confidence, 0, 2) > 0.55) {
+    let see = results[0].label.split(",");
+    select("#result").html(see[0]);
     select("#probability").html(nf(results[0].confidence, 0, 2));
   } else {
     select("#result").html("...");
