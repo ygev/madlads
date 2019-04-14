@@ -19,7 +19,10 @@ let input = [];
 let prev;
 let finalString = "";
 let see;
+<<<<<<< HEAD
 let isConfirm = false;
+=======
+>>>>>>> 9608262fb14091c8d476f51bd7723e6921981715
 function preload() {
   //my table is comma separated value "csv"
   //and has a header specifying the columns labels
@@ -48,8 +51,11 @@ function draw() {
   confirmButton = document.getElementById("confirm");
 
   let probability = document.getElementById("probability").innerText;
+<<<<<<< HEAD
   document.getElementById("count").innerHTML =
     input.length + 1 + "/" + numOfInput;
+=======
+>>>>>>> 9608262fb14091c8d476f51bd7723e6921981715
 
   //when the model sees new things
 
@@ -57,12 +63,19 @@ function draw() {
     see[0] != "..." &&
     see[0] != prev &&
     input.length < numOfInput &&
+<<<<<<< HEAD
     probability > 0.3 &&
     !isConfirm
   ) {
     myVoice.setVolume(1.0);
     myVoice.speak("I see" + see[0]);
     //myVoice.setVolume(0.0);
+=======
+    probability > 0.55
+  ) {
+    myVoice.setVolume(1.0);
+    myVoice.speak("I see" + see[0]);
+>>>>>>> 9608262fb14091c8d476f51bd7723e6921981715
 
     prev = see[0];
 
@@ -70,6 +83,7 @@ function draw() {
     confirmButton.onclick = function() {
       if (see[0] != "...") {
         myVoice.setVolume(0);
+<<<<<<< HEAD
         isConfirm = true;
         input.push(see[0]);
 
@@ -122,12 +136,62 @@ function draw() {
             yourMad = createDiv("Your Mad Libs");
             yourMad.id("your-mad");
 
+=======
+
+        input.push(see[0]);
+
+        confirmPage = createDiv(" ");
+        confirmPage.id("newpage");
+
+        itemNum = createDiv(input.length + "/" + numOfInput);
+        itemNum.id("itemNum");
+
+        objectName = createDiv(see[0]);
+        objectName.id("objectName");
+
+        nextButton = createButton("Next");
+        nextButton.id("nextButton");
+
+        vidEle = select("video");
+        vidEle.hide();
+
+        retake = createDiv("Retake");
+        retake.id("retake");
+
+        document.getElementById("retake").onclick = function() {
+          input.splice(-1, 1);
+          vidEle = select("video");
+          vidEle.show();
+          confirmPage.remove();
+          itemNum.remove();
+          objectName.remove();
+          nextButton.remove();
+          retake.remove();
+        };
+
+        document.getElementById("nextButton").onclick = function() {
+          vidEle = select("video");
+          vidEle.show();
+          confirmPage.remove();
+          itemNum.remove();
+          objectName.remove();
+          nextButton.remove();
+          retake.remove();
+
+          if (input.length == numOfInput) {
+>>>>>>> 9608262fb14091c8d476f51bd7723e6921981715
             madlibsPage = createDiv(" ");
             madlibsPage.id("madlibsPage");
 
             vidEle = select("video");
             vidEle.hide();
 
+<<<<<<< HEAD
+=======
+            yourMad = createDiv("Your Mad Libs");
+            yourMad.id("your-mad");
+
+>>>>>>> 9608262fb14091c8d476f51bd7723e6921981715
             again = createDiv("Play Again");
             again.id("again");
 
@@ -171,7 +235,11 @@ function classifyVideo() {
 // When we get a result
 function gotResult(err, results) {
   // The results are in an array ordered by confidence.
+<<<<<<< HEAD
   if (nf(results[0].confidence, 0, 2) > 0.3) {
+=======
+  if (nf(results[0].confidence, 0, 2) > 0.55) {
+>>>>>>> 9608262fb14091c8d476f51bd7723e6921981715
     let see = results[0].label.split(",");
     select("#result").html(see[0]);
     select("#probability").html(nf(results[0].confidence, 0, 2));

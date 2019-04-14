@@ -187,3 +187,11 @@ button {
   /* display: inline; */
   text-align: center;
 }
+
+#your-mad {
+  z-index: 20;
+}
+
+#again {
+  z-index: 20;
+}
