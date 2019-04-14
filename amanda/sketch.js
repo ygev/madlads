@@ -235,8 +235,7 @@ function classifyVideo() {
 // When we get a result
 function gotResult(err, results) {
   // The results are in an array ordered by confidence.
-<<<<<<< HEAD
-  if (nf(results[0].confidence, 0, 2) > 0.3) {
+  
 =======
   if (nf(results[0].confidence, 0, 2) > 0.55) {
 >>>>>>> 9608262fb14091c8d476f51bd7723e6921981715
