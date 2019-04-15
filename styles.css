@@ -80,7 +80,7 @@ button {
   background-color: white;
   border-radius: 100px;
   border: 10px solid #121212;
-  box-shadow: 5px 5px #121212;
+  box-shadow: 15px 15px white;
   transform: translate(93%, 100%);
   width: 35vw;
   font-family: "Poppins", sans-serif;
