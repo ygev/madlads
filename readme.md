@@ -4,4 +4,5 @@
 Created at the **Bitcamp 2019** hackathon, winning the **Best First Time Hack** prize!
 
 Devpost page: [devpost.com/software/madlads](https://devpost.com/software/madlads)
-Figma mockup: [figma.com/file/fgg95DanEOz8AFXKqTQzM1N0/](https://www.figma.com/file/fgg95DanEOz8AFXKqTQzM1N0/)
+
+Figma mockup: [figma.com/file/fgg95DanEOz8AFXKqTQzM1N0](https://www.figma.com/file/fgg95DanEOz8AFXKqTQzM1N0)
