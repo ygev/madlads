@@ -11,6 +11,8 @@ video {
   object-fit: cover;
   left: 0px;
   top: 0;
+  /* safari fix */
+  -webkit-transform-style: preserve-3d;
 }
 
 /* Box */
