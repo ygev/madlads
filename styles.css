@@ -89,3 +89,43 @@ button {
   font-weight: 700;
   font-size: 1.75em;
 }
+
+@media only screen and (min-device-width: 780px) {
+  .main {
+    display: none;
+  }
+
+  .mobile-only-container {
+	background: url(background.png);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffcb3d;
+  }
+
+  .mobile-only-container img {
+    height: 80vh;
+    margin: 0 auto;
+  }
+
+  .mobile-only {
+    text-align: center;
+    font-size: 0.75em;
+    margin: 1em;
+    line-height: 1.5em;
+  }
+
+  .mobile-only em {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-device-width: 779px) {
+  .mobile-only-container {
+    display: none;
+  }
+}
+

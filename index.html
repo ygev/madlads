@@ -17,22 +17,27 @@
 </head>
 
 <body>
-
-  <header class="header__wrapper">
-    <h1 class="header__madlads">MadLads</h1>
-    <h2 class="header__description">Madlibs with your camera.</h2>
-  </header>
-  <p>
-    <span id="result"></span>
-  </p>
-  <section class="box"></section>
-  <section class="blank__wrapper">
-    <div class="blank__space"><span id="blank__text"> </span> </div>
-  </section>
-  <script src="sketch.js"></script>
-  <section class="video__wrapper"></section>
-  <form action="amanda/start.html"> <button class = "start">Start</button></form>
-  </section>
+  <div class="main">
+    <header class="header__wrapper">
+      <h1 class="header__madlads">MadLads</h1>
+      <h2 class="header__description">Madlibs with your camera.</h2>
+    </header>
+    <p>
+      <span id="result"></span>
+    </p>
+    <section class="box"></section>
+    <section class="blank__wrapper">
+      <div class="blank__space">
+	    <span id="blank__text"> </span>
+	  </div>
+    </section>
+    <script src="sketch.js"></script>
+    <form action="amanda/start.html"> <button class = "start">Start</button></form>
+  </div>
+  <div class="mobile-only-container">
+    <img src="foreground.png" alt="Mad Lads phone mockup">
+	<span class="mobile-only"><em>MadLads is best played on your phone.</em><br/>Please access the site on mobile.</span>
+  </div>
 </body>
 
 </html>
